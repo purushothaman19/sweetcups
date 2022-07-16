@@ -115,7 +115,7 @@ export default function AddItem(props) {
         axios({
             method: 'post',
             url: 'http://localhost:4000/dashboardAdd',
-            data: {"cake":prices},
+            data: {"cakeName":cakeName,"prices":prices,"cakeImgUrl":img}
    
           }).then( res => console.log(res.data))
     .catch( err => console.log(err));
