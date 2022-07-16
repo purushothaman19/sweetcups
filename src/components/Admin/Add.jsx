@@ -109,7 +109,7 @@ export default function AddItem(props) {
 
          const headers = { 
             'Authorization': 'Bearer my-token',
-            "Content-Type": "application/vnd.api+json",
+            "Content-Type": "multipart/form-data",
         };
 
         axios({
