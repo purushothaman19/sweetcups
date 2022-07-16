@@ -103,7 +103,6 @@ export default function AddItem(props) {
             ...prevState,
             cakeName: cakeName,
             cakeImgUrl: img,
-            availableSizes: sSizes,
             prices: prices
          }));
 
@@ -117,9 +116,10 @@ export default function AddItem(props) {
         axios({
             method: 'post',
             url: 'http://localhost:4000/dashboardAdd',
-            data: cake,
+            data: JSON.stringify(cake),
             headers: headers,
-          });
+          }).then( res => console.log(res.data))
+    .catch( err => console.log(err));
     } 
 
     React.useEffect(() => {
