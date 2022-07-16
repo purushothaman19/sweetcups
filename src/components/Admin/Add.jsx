@@ -67,7 +67,7 @@ export default function AddItem(props) {
     const [img, setImg] = React.useState();
 
     const handleImg = (event) => {
-        setImg(event.target.files[0])
+        setImg(File(event.target.files[0]))
     };
 
     const [canSubmit, setCanSubmit] = React.useState(true);
@@ -97,7 +97,7 @@ export default function AddItem(props) {
     }
 
     const handleSumbit = (e) => {
-
+        e.preventDefault();
         setCake(prevState => ({
             ...prevState,
             "cakeName": cakeName,
@@ -115,7 +115,7 @@ export default function AddItem(props) {
         axios({
             method: 'post',
             url: 'http://localhost:4000/dashboardAdd',
-            data: {"cakeName":cakeName,"prices":prices,"cakeImgUrl":File(img)}
+            data: {"cakeName":cakeName,"prices":prices,"cakeImgUrl":img}
    
           }).then( res => console.log(res.data))
     .catch( err => console.log(err));
