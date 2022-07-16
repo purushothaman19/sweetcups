@@ -59,10 +59,9 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 export default function AddItem(props) {
 
     const [cake, setCake] = React.useState( {
-        name: "",
-        availableSizes: [],
+        cakeName : "",
         prices: {},
-        image: File
+        cakeImgUrl: File
     })
 
     const [img, setImg] = React.useState();
