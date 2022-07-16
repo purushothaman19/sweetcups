@@ -100,9 +100,9 @@ export default function AddItem(props) {
         e.preventDefault();
         
         let formData = new FormData();
-        data.append("cakeName", cakeName);
-        data.append("prices", prices);
-        data.set("data", img);
+        formData.append("cakeName", cakeName);
+        formData.append("prices", prices);
+        formData.set("data", img);
         
         
         setCake(prevState => ({
