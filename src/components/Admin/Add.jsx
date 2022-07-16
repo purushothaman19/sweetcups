@@ -67,7 +67,7 @@ export default function AddItem(props) {
     const [img, setImg] = React.useState();
 
     const handleImg = (event) => {
-        setImg(File(event.target.files[0]))
+        setImg(event.target.files[0])
     };
 
     const [canSubmit, setCanSubmit] = React.useState(true);
