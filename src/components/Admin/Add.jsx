@@ -109,7 +109,7 @@ export default function AddItem(props) {
 
          const headers = { 
             'Authorization': 'Bearer my-token',
-            "Content-Type": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
         };
 
         axios({
