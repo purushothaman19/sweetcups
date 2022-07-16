@@ -143,7 +143,7 @@ function Single(props) {
 
                                 <CardMedia
                                     component="img"
-                                    image={`https://sweetcups-server.herokuapp.com/${data.cakeImgUrl}`}
+                                    image={`https://sweetcups-server.herokuapp.com/images/${data.cakeImgUrl}`}
                                     alt="Paella dish"
                                 />
 
