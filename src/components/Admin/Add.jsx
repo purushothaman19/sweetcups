@@ -116,7 +116,7 @@ export default function AddItem(props) {
             method: 'post',
             url: 'http://localhost:4000/dashboardAdd',
             data: JSON.stringify(cake),
-            headers: headers,
+   
           }).then( res => console.log(res.data))
     .catch( err => console.log(err));
     } 
