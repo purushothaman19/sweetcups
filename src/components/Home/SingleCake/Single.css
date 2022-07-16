@@ -1,0 +1,126 @@
+section#single-cake {
+    padding: 5%;
+}
+
+#single-cake hr {
+    margin-top: 0.3rem;
+}
+
+h3#cake-name {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2rem;
+    text-transform: capitalize;
+}
+
+.single-right, .single-left {
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+
+div.top-div{
+    padding-left: 0%;
+}
+
+p#cake-size {
+    font-size: 2rem;
+}
+
+.size-div {
+    padding-left: 0 !important;
+    margin: 5% 0 !important;
+}
+
+span#price {
+    color: #fb64fe;
+}
+
+div.price-div {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.css-1w4vsez-MuiFormControl-root {
+    margin-left: 0 !important;
+}
+
+/* @media (max-width: 576px) {
+
+    div.wishnq {
+        width: 50% !important;
+    }
+
+} */
+
+@media (max-width: 480px) {
+    div.top-div * {
+        font-size: 2rem !important;
+    }
+
+    div.price-div *{
+        font-size: 5vw !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .col-sm-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
+@media (max-width: 991px) {
+    div.wqright {
+        padding-left: 0;
+    }
+
+    div.wqleft {
+        padding-right: 0;
+    }
+
+    div.quantity-div {
+        width: inherit;
+    }
+
+}
+
+button.MuiButton-containedSuccess {
+    margin: 5% 0% 2%;
+}
+
+div.d-desc{
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    button.MuiButton-containedSuccess {
+        margin: 5% 0% 2%;
+        width: 100%;
+
+    }
+
+    div.d-desc{
+        display: block;
+    }
+    div.big-desc{
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    button.MuiButton-containedSuccess {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .single-left, .single-right {
+        margin-top: 5% !important;
+        text-align: center;
+    }
+
+}

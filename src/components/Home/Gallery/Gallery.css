@@ -1,0 +1,36 @@
+
+#gallery-section{
+    margin: 5% auto;
+    padding-top: 3% !important;
+    padding: 10%;
+    background: #f8ebec;
+}
+
+#gallery-heading{
+    color: brown;
+    margin: 2% 7% 5%;
+
+    font-family: 'Righteous', cursive;
+    
+}
+
+
+.gallery-desc {
+    padding-top: 4%;
+    font-family: 'Supermercado One', cursive;
+    font-size: 1.7vw;
+    color: #F3A09F;
+}
+
+p#gallery-p {
+    font-size: 1.5vw !important;
+    font-family: 'Supermercado One', cursive;
+    color: rgb(158, 70, 70);
+}
+
+
+@media (max-width: 820px) {
+    a.uk-position-small{
+        display: none !important;
+    }   
+}

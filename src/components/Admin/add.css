@@ -1,0 +1,16 @@
+#img-paper{
+    text-align: center;
+    padding: 10%;
+}
+
+div#cakename{
+    margin: 5% auto ;
+}
+
+#left-add{
+    padding: 5% 10%;
+}
+
+#left-add * {
+    color: black !important;
+}

@@ -1,0 +1,87 @@
+
+.uk-grid{
+    margin-left: 0%;
+}
+
+#items-h3{
+    font-family: 'Righteous', cursive;
+    padding: 0% 25%;
+    color: aliceblue;
+    margin: 5% auto 10%;
+}
+
+#items-section{
+    margin-top: 2%;
+    padding: 2% 5%;
+    border-radius: 99px 99px 9px 9px;
+    background: #ff606d;
+
+    position: relative;
+}
+
+
+@media (max-width: 948px) {
+    #items-section{
+        margin-top: 5% !important;
+        border-radius: 0px !important;
+        padding-top: 0% !important;
+        padding-right: 0% !important;
+        padding-left: 0% !important;
+    }
+
+    #item-h3-section{
+        font-family: 'Righteous', cursive;
+        padding: 2% 1% !important;
+        margin: 0% !important;
+        margin-bottom: 5% !important;
+        background: rgb(206, 84, 94);
+
+    }
+
+    h3#items-h3{
+        font-size: 1rem !important;
+        color: #ffffff;
+    }
+    
+}
+
+.first-section{
+    margin-bottom: 1% !important;
+    position: relative !important;
+}
+
+.uk-card-item{
+    padding-bottom: 10% !important;
+    padding-top: 0 !important;
+}
+
+.second-row{
+    margin-top: 1% !important;
+    padding-top: 0 !important;
+    position: relative !important;
+}
+
+.item-img{
+    width: 40%;
+    border-radius: 999px;
+}
+
+.t-row{
+    width: 20%;
+}
+
+.item-title{
+    font-family: 'Supermercado One', cursive;
+    color: aliceblue;
+}
+
+@media (max-width: 639px) {
+    
+    .t-row{
+        width: 40% !important;
+    }
+    
+    #items-h3{
+        padding: 0% 10%;
+    }
+}

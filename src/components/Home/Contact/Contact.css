@@ -1,0 +1,79 @@
+
+#contact-section{
+    padding: 5%;
+    background: #F8EBEC;
+    border-radius: 9px;
+}
+
+.contact-title{
+    color: #ED65A9 !important;
+    font-family: 'Righteous', cursive;
+}
+
+h2.contact-title:not(.logo-name){
+    padding-bottom: 5% !important;
+}
+
+
+ul.contact-ul{
+    margin-left: 0% !important;
+    padding: 0% 2% !important;
+}
+
+
+@media (max-width: 639px) {
+    ul.contact-ul{
+        margin-left: 20% !important;
+    }
+
+    div.uk-card-contact{
+        padding-left:  0px !important;
+        padding-right: 0px !important;
+    }
+
+}
+
+@media (max-width: 375px) {
+    ul.contact-ul{
+        margin-left: 15% !important;
+    }
+
+}
+
+
+li.contact-li a{
+    width: 100%;
+    font-family: 'Supermercado One', cursive;
+    font-size: 120% !important;
+
+    color: rgb(253, 158, 158) !important;
+}
+
+
+@media (max-width: 639px) {
+
+    li.contact-li a{
+        font-size: 100% !important;
+    }
+}
+
+
+#logo{
+    width: 30%;
+}
+
+h2.logo-name {
+    margin-top:    2px;
+    margin-bottom: 0px;
+}
+
+.uk-card-contact-2 p{
+    font-family: 'Supermercado One', cursive;
+    margin-top: 1px;
+    color: rgb(253, 163, 163);
+}
+
+
+.contact-icon{
+    padding-right: 20px !important;
+}
