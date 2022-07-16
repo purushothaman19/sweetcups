@@ -100,7 +100,7 @@ export default function AddItem(props) {
 
         setCake(prevState => ({
             ...prevState,
-            cakeName: cakeName,
+            "cakeName": cakeName,
             cakeImgUrl: img,
             prices: prices
          }));
