@@ -98,7 +98,6 @@ export default function AddItem(props) {
     }
 
     const handleSumbit = (e) => {
-        e.preventDefault();
 
         setCake(prevState => ({
             ...prevState,
@@ -112,7 +111,7 @@ export default function AddItem(props) {
 
          const headers = { 
             'Authorization': 'Bearer my-token',
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json",
         };
 
         axios({
