@@ -59,9 +59,10 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 export default function AddItem(props) {
 
     const [cake, setCake] = React.useState( {
-        "cakeName" : "",
+        name: "",
+        availableSizes: [],
         prices: {},
-        cakeImgUrl: File
+        image: File
     })
 
     const [img, setImg] = React.useState();
@@ -98,17 +99,12 @@ export default function AddItem(props) {
 
     const handleSumbit = (e) => {
         e.preventDefault();
-        
-        let formData = new FormData();
-        formData.append("cakeName", cakeName);
-        formData.append("prices", prices);
-        formData.set("data", img);
-        
-        
+
         setCake(prevState => ({
             ...prevState,
-            "cakeName": cakeName,
+            cakeName: cakeName,
             cakeImgUrl: img,
+            availableSizes: sSizes,
             prices: prices
          }));
 
@@ -122,9 +118,19 @@ export default function AddItem(props) {
         axios({
             method: 'post',
             url: 'http://localhost:4000/dashboardAdd',
-            data: formData
-          }).then( res => console.log(res.data))
-    .catch( err => console.log(err));
+            data: {
+                'cakeName': cakeName,
+                'cakeImgUrl': img,
+                'prices': JSON.stringify(prices)
+            },
+            
+            // headers: headers,
+            headers : { 
+                // 'Authorization': 'Bearer my-token',
+                // 'Accept' :  "application/json",
+                "Content-Type": 'multipart/form-data'
+            }
+          });
     } 
 
     React.useEffect(() => {
