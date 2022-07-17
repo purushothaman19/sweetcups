@@ -46,7 +46,7 @@ export default function Edit() {
           data: { name: e.target.value, url: e.target.ariaLabel }
         }).then((res) => {
           if (res.err) Swal.fire(`${res.err}`, '', 'info')
-          else Swal.fire('Added!', '', 'success')
+          else Swal.fire('Deleted!', '', 'success')
         })
           .catch((e) => {
             console.log(e.message);

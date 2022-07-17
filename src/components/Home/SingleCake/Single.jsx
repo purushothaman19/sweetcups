@@ -56,6 +56,7 @@ function Single(props) {
     const location = useLocation()
     const data = location.state
 
+    console.log(data);
     const [size, setsize] = React.useState('');
     let [price, setprice] = React.useState(0);
     let [quantity, setq] = React.useState(1);
@@ -204,28 +205,6 @@ function Single(props) {
                             <hr></hr>
 
                             <div className="container" style={{ padding: 0, marginBottom: '5%' }}>
-                                {/* <ToggleButtonGroup
-                                    color="success"
-                                    value={size}
-                                    exclusive
-                                    onChange={handleChange}
-                                    aria-label="text alignment"
-                                    size='small'
-                                >
-
-                                    {data.cakeSize.map((option) => (
-                                        <ToggleButton className='size-toggle' value={option.price} aria-label={option.size}>
-                                            <div className="container">
-                                                <div className="row">
-                                                    <div className="col-12 col-sm-12"> {option.size} </div>
-                                                    <div className="col-12 col-sm-12"> {option.price} </div>
-                                                </div>
-                                            </div>
-
-                                        </ToggleButton>
-                                    ))}
-
-                                </ToggleButtonGroup> */}
 
                                 <FormControl fullWidth>
                                     <InputLabel id="demo-simple-select-label"> Size </InputLabel>
@@ -238,7 +217,8 @@ function Single(props) {
                                         style={{ textTransform: 'Capitalize' }}
                                     >
                                         {data.cakeSize.map((option) => (
-                                            <MenuItem value={option.price}> {option.size} {option.price} </MenuItem>
+                                        
+                                            <MenuItem value={option.prices}> {option.size} (Rs.{option.prices}) </MenuItem>
                                         ))}
 
                                     </Select>
