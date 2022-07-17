@@ -118,8 +118,18 @@ export default function AddItem(props) {
         axios({
             method: 'post',
             url: 'http://localhost:4000/dashboardAdd',
-            data: cake,
-            headers: headers,
+            data: {
+                'cakeName': cakeName,
+                'cakeImgUrl': img,
+                'prices': JSON.stringify(prices)
+            },
+            
+            // headers: headers,
+            headers : { 
+                // 'Authorization': 'Bearer my-token',
+                // 'Accept' :  "application/json",
+                "Content-Type": 'multipart/form-data'
+            }
           });
     } 
 
