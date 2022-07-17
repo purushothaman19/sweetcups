@@ -1,65 +1,16 @@
-import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
-import FormControlLabel from '@mui/material/FormControlLabel';
-
-import { styled } from '@mui/material/styles';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import InputBase from '@mui/material/InputBase';
-import Checkbox from '@mui/material/Checkbox';
-import Button from '@mui/material/Button';
-
-import LaptopIcon from '@mui/icons-material/Laptop';
-import TvIcon from '@mui/icons-material/Tv';
-import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import Swal from 'sweetalert2';
 import Stack from '@mui/material/Stack';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import "./add.css";
-
 import * as axios from 'axios';
-
-const BootstrapInput = styled(InputBase)(({ theme }) => ({
-    'label + &': {
-        marginTop: theme.spacing(3),
-    },
-    '& .MuiInputBase-input': {
-        borderRadius: 4,
-        position: 'relative',
-        backgroundColor: theme.palette.background.paper,
-        border: '1px solid #ced4da',
-        fontSize: 16,
-        padding: '10px 26px 10px 12px',
-        transition: theme.transitions.create(['border-color', 'box-shadow']),
-        // Use the system font instead of the default Roboto font.
-        fontFamily: [
-            '-apple-system',
-            'BlinkMacSystemFont',
-            '"Segoe UI"',
-            'Roboto',
-            '"Helvetica Neue"',
-            'Arial',
-            'sans-serif',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-        ].join(','),
-        '&:focus': {
-            borderRadius: 4,
-            borderColor: '#80bdff',
-            boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-        },
-    },
-}));
 
 
 export default function AddItem(props) {
 
-    const [cake, setCake] = React.useState( {
-        name: "",
+    const [cake, setCake] = React.useState({
         availableSizes: [],
         prices: {},
         image: File
@@ -90,15 +41,16 @@ export default function AddItem(props) {
     const [prices, setPrice] = React.useState({})
 
     const handlePrice = (e) => {
-        console.log(e.target); 
+        console.log(e.target);
         setPrice((preV) => ({
             ...preV,
             [e.target.name]: Number(e.target.value)
         }))
     }
 
+    // const [err, setErr] = React.useState('');
+
     const handleSumbit = (e) => {
-        e.preventDefault();
 
         setCake(prevState => ({
             ...prevState,
@@ -106,32 +58,42 @@ export default function AddItem(props) {
             cakeImgUrl: img,
             availableSizes: sSizes,
             prices: prices
-         }));
+        }));
 
-         console.log(cake);
+        console.log(cake);
 
-         const headers = { 
+        const headers = {
             'Authorization': 'Bearer my-token',
             "Content-Type": "multipart/form-data",
         };
 
-        axios({
-            method: 'post',
-            url: 'http://localhost:4000/dashboardAdd',
-            data: {
-                'cakeName': cakeName,
-                'cakeImgUrl': img,
-                'prices': JSON.stringify(prices)
-            },
+        Swal.fire({
+            title: 'Ready to Upload?',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+        }).then((result) => {
             
-            // headers: headers,
-            headers : { 
-                // 'Authorization': 'Bearer my-token',
-                // 'Accept' :  "application/json",
-                "Content-Type": 'multipart/form-data'
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                axios({
+                    method: 'post',
+                    url: 'https://sweetcups-server.herokuapp.com/dashboardAdd',
+                    data: {
+                        'cakeName': cakeName,
+                        'cakeImgUrl': img,
+                        'prices': JSON.stringify(prices)
+                    },
+                    headers: headers,
+                }).then( (res)=> console.log('success') ) 
+                .catch( (e) => {
+                    console.log(e.message);
+                    // setErr(e.message);
+                if(e.message != null)  Swal.fire(`${e.message}`, '', 'info')
+                else     Swal.fire('Added!', '', 'success')
+                })
             }
-          });
-    } 
+        })
+    }
 
     React.useEffect(() => {
         console.log(prices);
@@ -154,7 +116,7 @@ export default function AddItem(props) {
                             <div className="input-group mb-3" id='cakeimg'>
                                 <span className="input-group-text border-0" id="basic-addon3">Cake Image: </span>
                                 <input
-                    
+
                                     type="file"
                                     accept='image/*'
                                     className="form-control rounded"
@@ -179,6 +141,7 @@ export default function AddItem(props) {
 
                             <div style={{ paddingTop: '5%' }}>
                                 <p> Available Sizes </p>
+                                <span style={{ fontSize: '0.7rem' }}> Please select all the Available sizes of this cake </span>
                                 <Stack direction="row" spacing={4} style={{ justifyContent: 'center' }}>
 
                                     <ToggleButtonGroup
@@ -199,6 +162,7 @@ export default function AddItem(props) {
 
                         <div className='col-lg-6 col-md-12 col-sm-12'>
                             <p> Sizes </p>
+                            <span style={{ fontSize: '0.7rem' }}> Enter all the respective prices </span>
 
                             {sSizes.length ?
                                 <div>
@@ -212,9 +176,9 @@ export default function AddItem(props) {
                                                 <input
                                                     required
                                                     type="number"
-                                                    value={ Object.keys(prices) ? prices[String(option)+'value'] : 0 }
-                                                    name= {option + "value"}
-                                                    onChange = {handlePrice}
+                                                    value={Object.keys(prices) ? prices[String(option) + 'value'] : 0}
+                                                    name={option + "value"}
+                                                    onChange={handlePrice}
                                                     className="form-control rounded"
                                                     id="basic-url3"
                                                     aria-describedby="basic-addon3"
@@ -228,7 +192,7 @@ export default function AddItem(props) {
                                 :
                                 <>
                                     <Paper elevation={3} style={{ margin: '15% 25%', width: '50%', padding: '5%' }}>
-                                    <img src='https://cdn.dribbble.com/users/129972/screenshots/2888283/74_03_smile.gif' alt=''/>
+                                        <img src='https://cdn.dribbble.com/users/129972/screenshots/2888283/74_03_smile.gif' alt='' />
                                         <p> Please select sizes to set prices </p>
                                     </Paper>
                                 </>
@@ -238,7 +202,7 @@ export default function AddItem(props) {
                         </div>
 
                         <div className='col-lg-12 col-md-12 col-sm-12' style={{ marginTop: '5%' }}>
-                            <button onClick={handleSumbit} disabled={canSubmit} className='btn' style={{ borderRadius: '20px', background: 'yellow', fontSize: '1rem' }}> Submit </button>
+                            <button type='button' onClick={handleSumbit} disabled={canSubmit} className='btn' style={{ borderRadius: '20px', background: 'yellow', fontSize: '1rem' }}> Submit </button>
                         </div>
 
                     </div>

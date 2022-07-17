@@ -1,0 +1,23 @@
+
+section#edit-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.table{
+    width: 50em;
+}
+
+@media (max-width: 650px)  {
+    div.table{
+        width: 100em !important;
+    }
+}
+
+@media (min-width: 650px) and (max-width: 900px) {
+    div.table{
+        width: 80em !important;
+    }
+}
+
