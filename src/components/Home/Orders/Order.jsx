@@ -114,13 +114,13 @@ export default function Order() {
                     )}
 
                     {cake ? (
-                      <Box sx={{ pr: 10 }}>
-                        <Typography gutterBottom variant="body2" style={{ marginTop: '3%', fontSize: '1.5rem', color:'#ff610c' }}>
+                      <Box sx={{ pr: 10 }} style={{ paddingRight: 0}}>
+                        <Typography gutterBottom variant="body2" style={{ textAlign:'center', marginTop: '3%', fontSize: '1.5rem', color:'#ff610c' }}>
                           {cake.cakeName}
                         </Typography>
-                        <Typography variant="caption" color="text.secondary">
+                        {/* <Typography variant="caption" color="text.secondary">
                           {`~ from 2000`}
-                        </Typography>
+                        </Typography> */}
                       </Box>
                     ) : (
                       <Box sx={{ pt: 0.5 }}>

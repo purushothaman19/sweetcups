@@ -191,8 +191,6 @@ function Single(props) {
                                 <div className="row">
 
                                     <div className="col-lg-6 col-md-6 col-sm-6 top-div">
-
-
                                         <h3 id='cake-name' > {data.cakeName} </h3>
                                     </div>
 
