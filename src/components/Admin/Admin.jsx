@@ -38,7 +38,7 @@ function Admin() {
                 url: 'https://sweetcups-server.herokuapp.com/login',
                 data: { user: username, pass: password },
                 headers: {
-                    
+                    'Access-Control-Allow-Origin' : '*'
                 }
               }).then((res) => {
                 window.sessionStorage.setItem("token", res.data.token);
