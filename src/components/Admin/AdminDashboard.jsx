@@ -18,8 +18,16 @@ export default function AdminDasboard() {
         setValue(newValue);
     };
 
+    function logout() {
+        window.sessionStorage.removeItem('token');
+        window.location.reload()
+    }
+
     return (
         <section id='dashboard'>
+            <div style={{ display: 'flex', justifyContent: 'right' }}>
+                <button onClick={logout} type="button" class="btn btn-danger btn-sm btn-rounded"> Logout </button>
+            </div>
             <Box sx={{ width: '100%', typography: 'body1' }}>
                 <TabContext value={value}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>

@@ -1,12 +1,25 @@
 // import * as mdb from 'mdb-ui-kit';
-import { useState } from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import Swal from "sweetalert2";
 import "./admin.css";
+import { useNavigate, useLocation, Navigate} from "react-router-dom";
 
 function Admin() {
 
+    console.log('admin');
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    // function isAdmin() {
+
+
+    // }
+    // isAdmin();
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [isAdmin, setAdmin] = useState(false);
+    // const [Dis, setDis] = useState(false);
 
     function handleusername(e) {
         setUsername(e.target.value)
@@ -17,10 +30,35 @@ function Admin() {
     };
 
     function handleSubmit(e) {
-        if (username && password) setAdmin(true);
+        if (username && password) {
+            // setDis(true);
+            // e.preventDefault();
+            axios({
+                method: 'post',
+                url: 'https://sweetcups-server.herokuapp.com/login',
+                data: { user: username, pass: password }
+              }).then((res) => {
+                window.sessionStorage.setItem("token", res.data.token);
+                console.log(window.sessionStorage.getItem("token"));
+                // if (res) console.log(res);
+                // else console.log('NO');
+              })
+                .catch((e) => {
+                  console.log(e.message);
+                  if (e.message) Swal.fire(`${e.message}`, '', 'info')
+      
+                })
+        
+        }
         else e.preventDefault();
     }
 
+    React.useEffect( ()=>{
+        if(window.sessionStorage.getItem("token")) {
+            // console.log('jeollo');
+            navigate('/dashboard')
+        }
+    })
 
     return (
         <section className="vh-100 gradient-custom admin-section">
@@ -45,8 +83,6 @@ function Admin() {
                                                 <input type="password" id="typePasswordX" className="form-control form-control-lg" value={password} onChange={handlepassword} />
                                                 <label className="form-label" htmlFor="typePasswordX" required>Password*</label>
                                             </div>
-
-                                            <p className="small mb-5 pb-lg-2"><a className="text-white-50" href="#!">Forgot password?</a></p>
 
                                             <button className="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
                                         </form>

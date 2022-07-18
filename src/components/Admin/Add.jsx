@@ -63,7 +63,7 @@ export default function AddItem(props) {
         console.log(cake);
 
         const headers = {
-            'Authorization': 'Bearer my-token',
+            'Authorization': window.sessionStorage.getItem('token'),
             "Content-Type": "multipart/form-data",
         };
 
