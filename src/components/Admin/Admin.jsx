@@ -35,7 +35,7 @@ function Admin() {
         if (username && password) {
             // setDis(true);
             e.preventDefault(); 
-            axios.post('http://sweetcups-server.herokuapp.com/login',qs.stringify({
+            axios.post('https://sweetcups-server.herokuapp.com/login',qs.stringify({
                 user: username, pass: password 
               }),{headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
               
@@ -46,8 +46,6 @@ function Admin() {
                     window.location.reload();
                 }
                 
-                // if (res) console.log(res);
-                // else console.log('NO');
               })
               .catch((e) => {
                   console.log(e);
