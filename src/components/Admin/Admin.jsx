@@ -42,9 +42,7 @@ function Admin() {
               .then((res) => {
                 
                 window.sessionStorage.setItem("token", res.data.token);
-                if(window.sessionStorage.getItem("token")){
-                    window.location.reload();
-                }
+        
                 
               })
               .catch((e) => {
