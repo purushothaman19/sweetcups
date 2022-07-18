@@ -45,7 +45,7 @@ function Admin() {
                 window.sessionStorage.setItem("token", res.data.token);
                 if(window.sessionStorage.getItem("token")){
                     // <Navigate to='/dashboard' state= {{from: location}} />
-                    Window.location.reload();
+                    window.location.reload();
                 }
                 
               })
