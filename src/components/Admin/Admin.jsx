@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import "./admin.css";
 import { useNavigate, useLocation, Navigate} from "react-router-dom";
+import qs from "qs";
 
 function Admin() {
 
@@ -30,31 +31,31 @@ function Admin() {
     };
 
     function handleSubmit(e) {
+
         if (username && password) {
             // setDis(true);
-            // e.preventDefault();
-            axios({
-                method: 'post',
-                url: 'https://sweetcups-server.herokuapp.com/login',
-                data: { user: username, pass: password },
-                headers: {
-                    'Access-Control-Allow-Origin' : '*'
-                }
-              }).then((res) => {
+            e.preventDefault(); 
+            axios.post('http://sweetcups-server.herokuapp.com/login',qs.stringify({
+                user: username, pass: password 
+              }),{headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+              
+              .then((res) => {
+                
                 window.sessionStorage.setItem("token", res.data.token);
-                console.log(window.sessionStorage.getItem("token"));
+                if(window.sessionStorage.getItem("token")){
+                    window.location.reload();
+                }
+                
                 // if (res) console.log(res);
                 // else console.log('NO');
               })
-                .catch((e) => {
-                  console.log(e.message);
-                  window.sessionStorage.setItem("error", e);
-                  if (e.message) Swal.fire(`${e.message}`, '', 'info')
-      
+              .catch((e) => {
+                  console.log(e);
+                  window.sessionStorage.setItem("err", 'e.message');
+                //   if (e.message) Swal.fire(`${e.message}`, '', 'info')
                 })
-        
         }
-        else e.preventDefault();
+        
     }
 
     React.useEffect( ()=>{
