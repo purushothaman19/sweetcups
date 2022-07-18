@@ -77,7 +77,7 @@ export default function AddItem(props) {
             if (result.isConfirmed) {
                 axios({
                     method: 'post',
-                    url: 'https://sweetcups-server.herokuapp.com/dashboardAdd',
+                    url: 'http://sweetcups-server.herokuapp.com/dashboardAdd',
                     data: {
                         'cakeName': cakeName,
                         'cakeImgUrl': img,
