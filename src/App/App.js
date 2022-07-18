@@ -29,6 +29,7 @@ function App() {
         <Route path="/dashboard" element={ <PrivateRoute><AdminDasboard /></PrivateRoute> } />
         
         <Route path="/cakes/:cakename"  element={<Single/>} />
+        {/* <Route path="/cakes/:cakename"  element={<Single/>} /> */}
       </Routes>
 
     </div>

@@ -35,7 +35,7 @@ function Admin() {
             // e.preventDefault();
             axios({
                 method: 'post',
-                url: 'https://sweetcups-server.herokuapp.com/login',
+                url: 'http://sweetcups-server.herokuapp.com/login',
                 data: { user: username, pass: password }
               }).then((res) => {
                 window.sessionStorage.setItem("token", res.data.token);
