@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import "./admin.css";
 import { useNavigate, useLocation, Navigate} from "react-router-dom";
 import qs from "qs";
+import { WindowSharp } from "@mui/icons-material";
 
 function Admin() {
 
@@ -43,7 +44,8 @@ function Admin() {
                 
                 window.sessionStorage.setItem("token", res.data.token);
                 if(window.sessionStorage.setItem("token")){
-                    <Navigate to='/dashboard' state= {{from: location}} />
+                    // <Navigate to='/dashboard' state= {{from: location}} />
+                    Window.location.reload();
                 }
                 
               })
