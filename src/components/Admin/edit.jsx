@@ -42,7 +42,7 @@ export default function Edit() {
 
         axios({
           method: 'post',
-          url: 'http://sweetcups-server.herokuapp.com/delete',
+          url: 'https://sweetcups-server.herokuapp.com/delete',
           data: { name: e.target.value, url: e.target.ariaLabel }
         }).then((res) => {
           if (res.err) Swal.fire(`${res.err}`, '', 'info')
