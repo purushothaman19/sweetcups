@@ -36,7 +36,10 @@ function Admin() {
             axios({
                 method: 'post',
                 url: 'http://sweetcups-server.herokuapp.com/login',
-                data: { user: username, pass: password }
+                data: { user: username, pass: password },
+                headers: {
+                    
+                }
               }).then((res) => {
                 window.sessionStorage.setItem("token", res.data.token);
                 console.log(window.sessionStorage.getItem("token"));
@@ -45,6 +48,7 @@ function Admin() {
               })
                 .catch((e) => {
                   console.log(e.message);
+                  window.sessionStorage.setItem("error", e);
                   if (e.message) Swal.fire(`${e.message}`, '', 'info')
       
                 })
