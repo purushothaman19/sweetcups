@@ -84,11 +84,11 @@ export default function AddItem(props) {
                         'prices': JSON.stringify(prices)
                     },
                     headers: headers,
-                }).then(Swal.fire('Added!', '', 'success')) 
+                }).then( (res) => Swal.fire(res.data.msg) ) 
                 .catch( (e) => {
                     console.log(e.message);
                     // setErr(e.message);
-                if(e.message != null)  Swal.fire(`${e.message}`, '', 'info')
+                if(e)  Swal.fire(`${e.message}`, '', 'info')
                 else     Swal.fire('Added!', '', 'success')
                 })
             }
